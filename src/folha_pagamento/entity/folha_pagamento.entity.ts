@@ -1,5 +1,5 @@
-import { tb_Funcionario } from "src/funcionario/funcionario.entity"; // Importação tb_Funcionario
 import { Entity, PrimaryColumn, Column, ManyToMany, ManyToOne } from "typeorm"; // Importação Typerom 
+import { tb_Funcionario } from "../../funcionario/entity/funcionario.entity";  // Importação tb_Funcionario
 
 @Entity()
 export class tb_FolhaPagamento {
