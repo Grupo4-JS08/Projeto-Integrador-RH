@@ -15,37 +15,37 @@ import { FuncionarioService } from '../service/funcionario.service';
 
 @Controller('/funcionario')
 export class FuncionarioController{
-    constructor(private readonly FuncionarioService: FuncionarioService){}
+    constructor(private readonly funcionarioService: FuncionarioService){}
 
 @Post() // Criar Funcionario
 @HttpCode(HttpStatus.CREATED)
 create(@Body() funcionario: tb_Funcionario): Promise<tb_Funcionario>{
-    return this.FuncionarioService.create(funcionario); 
+    return this.funcionarioService.create(funcionario); 
 }
 
 @Get() //Pesquisar Tabela Funcionario
 @HttpCode(HttpStatus.OK)
 findAll(): Promise<tb_Funcionario[]>{
-    return this.FuncionarioService.findAll();
+    return this.funcionarioService.findAll();
 }
 
-@Get('/:id') // Pesquisa por Id
+@Get('/:id') // Pesquisa por ID
 @HttpCode(HttpStatus.OK)
 findById(@Param('id', ParseIntPipe) id: number): Promise<tb_Funcionario>{
-    return this.FuncionarioService.findById(id);
+    return this.funcionarioService.findById(id);
 }
 
-@Put('/:id')
+@Put('/:id') // Atualizar por ID
 @HttpCode(HttpStatus.OK)
 Update(@Param('id',ParseIntPipe) id: number,@Body()funcionario:tb_Funcionario,):
 Promise<tb_Funcionario>{
-    return this.FuncionarioService.update(id,funcionario);
+    return this.funcionarioService.update(id,funcionario);
 }
 
-@Delete('/:id')
+@Delete('/:id') // Deletar por ID
 @HttpCode(HttpStatus.NO_CONTENT)
 Delete(@Param('id',ParseIntPipe) id: number): Promise<void>{
-    return this.FuncionarioService.delete(id);
+    return this.funcionarioService.delete(id);
 }
 
 }

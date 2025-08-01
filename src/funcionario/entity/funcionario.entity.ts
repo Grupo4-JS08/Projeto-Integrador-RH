@@ -1,28 +1,29 @@
 import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm"; // Importação Typerom 
-import { tb_FolhaPagamento } from "src/folha_pagamento/entity/folha_pagamento.entity";
-import { funcionarioModule } from "../module/funcionario.module";
+import { FuncionarioModule } from "../module/funcionario.module";
+import { tb_Departamento } from "src/folha_pagamento/entity/departamento.entity";
 @Entity()
 export class tb_Funcionario {
     @PrimaryGeneratedColumn()
     id: number; // ID: 1
 
     @Column()
-    nomeCompleto: string; // Raul
-
-    @Column('decimal')
-    cpf: number // 513.157.478-76
+    nome_completo: string; // Raul
 
     @Column()
-    cargo: string; // Dev
-
-    @Column('decimal')
-    salario: number; // 1.500
+    hora_trabalhadas: number; // 10 horas
 
     @Column()
-    departamento: string; // TI
+    bonus: number; // 5 Horas de bonus
 
-    @ManyToOne(() => tb_Funcionario, funcionario => funcionario.folhasPagamento, {onDelete: 'CASCADE'} ) // Representa um relacionamento de Muitos para um.
-    folhasPagamento: any;
-    funcionario: tb_Funcionario[];
+    @Column()
+    descontos: number; // R$500 de descontos
 
+    @Column()
+    salario_bruto: number; // R$2500
+
+    @Column()
+    salario_liquido: number; // R$:2000
+
+    @OneToMany(() => tb_Departamento, departamento => departamento.funcionario, { cascade: true})
+    Departamento: tb_Departamento[];
 }

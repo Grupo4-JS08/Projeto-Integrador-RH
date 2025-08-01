@@ -1,7 +1,9 @@
 import { Module  } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { tb_FolhaPagamento } from "./folha_pagamento/entity/folha_pagamento.entity";
+import { tb_Departamento } from "./folha_pagamento/entity/departamento.entity";
+import { FuncionarioModule } from "./funcionario/module/funcionario.module";
 import { tb_Funcionario } from "./funcionario/entity/funcionario.entity";
+
 
 @Module({
   imports: [
@@ -10,12 +12,15 @@ import { tb_Funcionario } from "./funcionario/entity/funcionario.entity";
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '250319',
+      password: 'root',
       database: 'db_rh',
-      entities: [tb_FolhaPagamento, tb_Funcionario],
+      entities: [tb_Departamento, tb_Funcionario],
       synchronize: true,
     }),
+    // DepartamentoModule,
+    FuncionarioModule
   ],
+  
 })
 
 export class AppModule {}

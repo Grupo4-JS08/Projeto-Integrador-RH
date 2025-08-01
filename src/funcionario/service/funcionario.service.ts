@@ -21,12 +21,17 @@ export class FuncionarioService{
 
     // Listar Funcionário por (ID)
     async findById(id: number): Promise<tb_Funcionario>{
-        const funcionario = await this.funcionarioRepository.findOne({ where: {id} });
+        const funcionario = await this.funcionarioRepository.findOne({
+            where: { id },
+            relations: ['folhasPagamento'],
+        });
 
-        if (!funcionario){
-            throw new NotFoundException(`Funcionário com ID: ${id} não encontrado!`)
+        if (!funcionario) {
+            throw new NotFoundException(`Funcionário com ID: ${id} não encontrado.`);
         }
+
         return funcionario;
+
     }
 
     // Atualizar Funcionário
