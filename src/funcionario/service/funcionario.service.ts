@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Inject, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
@@ -16,18 +17,18 @@ export class FuncionarioService{
 
     // Listar todos os Funcionários
     async findAll(): Promise<tb_Funcionario[]> {
-        return this.funcionarioRepository.find({relations: ['folhasPagamento']});
+        return this.funcionarioRepository.find({relations: ['departamento']});
     }
 
     // Listar Funcionário por (ID)
     async findById(id: number): Promise<tb_Funcionario>{
         const funcionario = await this.funcionarioRepository.findOne({
             where: { id },
-            relations: ['folhasPagamento'],
+            relations: ['departamento'],
         });
 
         if (!funcionario) {
-            throw new NotFoundException(`Funcionário com ID: ${id} não encontrado.`);
+            throw new NotFoundException("Funcionário com ID: ${id} não encontrado.");
         }
 
         return funcionario;

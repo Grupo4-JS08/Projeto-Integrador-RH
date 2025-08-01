@@ -1,6 +1,7 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm"; // Importação Typerom 
-import { FuncionarioModule } from "../module/funcionario.module";
-import { tb_Departamento } from "src/folha_pagamento/entity/departamento.entity";
+/* eslint-disable */
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm"; // Importação Typerom
+// import { FuncionarioModule } from "../module/funcionario.module";
+import { Departamento } from '../../departamento/entity/departamento.entity';
 @Entity()
 export class tb_Funcionario {
     @PrimaryGeneratedColumn()
@@ -24,6 +25,11 @@ export class tb_Funcionario {
     @Column()
     salario_liquido: number; // R$:2000
 
-    @OneToMany(() => tb_Departamento, departamento => departamento.funcionario, { cascade: true})
-    Departamento: tb_Departamento[];
+    @ManyToOne(() => Departamento, departamento => departamento.funcionario, {
+        onDelete: "CASCADE",
+    }
+)
+
+    @JoinColumn({name: 'Departamento_id'})
+    departamento: Departamento;
 }

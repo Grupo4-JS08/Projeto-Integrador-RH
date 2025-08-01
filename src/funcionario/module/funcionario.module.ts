@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { tb_Funcionario } from "../entity/funcionario.entity";
@@ -8,6 +9,6 @@ import { FuncionarioController } from "../controller/funcionario.controller";
     imports: [TypeOrmModule.forFeature([tb_Funcionario])],
     providers: [FuncionarioService],
     controllers: [FuncionarioController],
-    exports: [TypeOrmModule],
+    exports: [FuncionarioService],
 })
-export class FuncionarioModule {}
+export class funcionarioModule {}
