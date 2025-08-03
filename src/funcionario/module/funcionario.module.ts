@@ -1,14 +1,14 @@
 /* eslint-disable */
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { tb_Funcionario } from "../entity/funcionario.entity";
-import { FuncionarioService } from "../service/funcionario.service";
-import { FuncionarioController } from "../controller/funcionario.controller";
+import { Funcionarios } from "../entity/funcionario.entity";
+import { FuncionariosService } from "../service/funcionario.service";
+import { FuncionariosController } from "../controller/funcionario.controller";
 
 @Module({
-    imports: [TypeOrmModule.forFeature([tb_Funcionario])],
-    providers: [FuncionarioService],
-    controllers: [FuncionarioController],
-    exports: [FuncionarioService],
+    imports: [TypeOrmModule.forFeature([Funcionarios])],
+    providers: [FuncionariosService],
+    controllers: [FuncionariosController],
+    exports: [FuncionariosService],
 })
-export class funcionarioModule {}
+export class FuncionariosModule {}

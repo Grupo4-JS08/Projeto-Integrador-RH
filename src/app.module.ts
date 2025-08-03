@@ -2,8 +2,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Departamento } from './departamento/entity/departamento.entity';
-import { funcionarioModule } from './funcionario/module/funcionario.module';
-import { tb_Funcionario } from './funcionario/entity/funcionario.entity';
+import { FuncionariosModule } from './funcionario/module/funcionario.module';
+import { Funcionarios } from './funcionario/entity/funcionario.entity';
 import { departamentoModule } from './departamento/module/departamento.module'
 
 @Module({
@@ -15,10 +15,10 @@ import { departamentoModule } from './departamento/module/departamento.module'
       username: 'root',
       password: '250319',
       database: 'db_rh',
-      entities: [Departamento, tb_Funcionario],
+      entities: [Departamento, Funcionarios],
       synchronize: true,
     }),
-    funcionarioModule,
+    FuncionariosModule,
     departamentoModule
   ],
 })

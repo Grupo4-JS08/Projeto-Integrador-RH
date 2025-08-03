@@ -3,7 +3,7 @@ import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn, Primar
 // import { FuncionarioModule } from "../module/funcionario.module";
 import { Departamento } from '../../departamento/entity/departamento.entity';
 @Entity()
-export class tb_Funcionario {
+export class Funcionarios {
     @PrimaryGeneratedColumn()
     id: number; // ID: 1
 
@@ -25,7 +25,7 @@ export class tb_Funcionario {
     @Column()
     salario_liquido: number; // R$:2000
 
-    @ManyToOne(() => Departamento, (departamento) => departamento.funcionario, {
+    @ManyToOne(() => Departamento, (departamento) => departamento.funcionarios, {
         onDelete: "CASCADE",
     }
 )

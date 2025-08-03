@@ -11,23 +11,23 @@ import{
     HttpCode,
     HttpStatus,
 } from '@nestjs/common';
-import { tb_Funcionario } from '../entity/funcionario.entity';
-import { FuncionarioService } from '../service/funcionario.service';
+import { Funcionarios } from '../entity/funcionario.entity';
+import { FuncionariosService } from '../service/funcionario.service';
 
-@Controller('/funcionario')
-export class FuncionarioController{
-    constructor(private readonly FuncionarioService: FuncionarioService){}
+@Controller('/funcionarios')
+export class FuncionariosController{
+    constructor(private readonly FuncionariosService: FuncionariosService){}
 
 @Post() // Criar Funcionario
 @HttpCode(HttpStatus.CREATED)
-create(@Body() funcionario: tb_Funcionario): Promise<tb_Funcionario>{
-    return this.FuncionarioService.create(funcionario);
+create(@Body() funcionarios: Funcionarios): Promise<Funcionarios>{
+    return this.FuncionariosService.create(funcionarios);
 }
 
 @Get() //Pesquisar Tabela Funcionario
 @HttpCode(HttpStatus.OK)
-findAll(): Promise<tb_Funcionario[]>{
-    return this.FuncionarioService.findAll();
+findAll(): Promise<Funcionarios[]>{
+    return this.FuncionariosService.findAll();
     
 /*}
 @Get(':id/salario-liquido' //  Busca salario liquido
@@ -37,21 +37,21 @@ findByid(@Param('id') id: number): Promise<any> {
 }
 @Get('/:id') // Pesquisa por Id
 @HttpCode(HttpStatus.OK)
-findById(@Param('id', ParseIntPipe) id: number): Promise<tb_Funcionario>{
-    return this.FuncionarioService.findById(id);
+findById(@Param('id', ParseIntPipe) id: number): Promise<Funcionarios>{
+    return this.FuncionariosService.findById(id);
 }
 
 @Put('/:id')
 @HttpCode(HttpStatus.OK)
-Update(@Param('id',ParseIntPipe) id: number,@Body()funcionario:tb_Funcionario,):
-Promise<tb_Funcionario>{
-    return this.FuncionarioService.update(id,funcionario);
+Update(@Param('id',ParseIntPipe) id: number,@Body()funcionarios:Funcionarios,):
+Promise<Funcionarios>{
+    return this.FuncionariosService.update(id,funcionarios);
 }
 
 @Delete('/:id')
 @HttpCode(HttpStatus.NO_CONTENT)
 Delete(@Param('id',ParseIntPipe) id: number): Promise<void>{
-    return this.FuncionarioService.delete(id);
+    return this.FuncionariosService.delete(id);
 }
 
 }

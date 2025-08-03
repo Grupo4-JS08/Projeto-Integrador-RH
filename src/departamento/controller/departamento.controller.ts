@@ -12,11 +12,11 @@ import{
     HttpStatus,
 } from '@nestjs/common';
 import { Departamento } from '../entity/departamento.entity';
-import {departamentoService} from '../service/departamento.service';
+import {DepartamentoService} from '../service/departamento.service';
 
 @Controller ('/departamento')
-export class departamentoController {
-    constructor ( private readonly DepartamentoService: departamentoService) {}
+export class DepartamentoController {
+    constructor ( private readonly DepartamentoService: DepartamentoService) {}
 
 @Post () // criar departamento
 @HttpCode (HttpStatus.CREATED)
