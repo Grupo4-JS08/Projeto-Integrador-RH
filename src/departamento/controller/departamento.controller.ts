@@ -12,7 +12,7 @@ import{
     HttpStatus,
 } from '@nestjs/common';
 import { Departamento } from '../entity/departamento.entity';
-import {DepartamentoService} from '../service/departamento.service';
+import {DepartamentoService} from '../service/departamento.service'
 
 @Controller ('/departamento')
 export class DepartamentoController {
@@ -20,7 +20,7 @@ export class DepartamentoController {
 
 @Post () // criar departamento
 @HttpCode (HttpStatus.CREATED)
-create(@Body () departamento: Departamento): Promise <Departamento>{
+create(@Body () departamento: Departamento): Promise<Departamento>{
     return this.DepartamentoService.create(departamento);
 }
 

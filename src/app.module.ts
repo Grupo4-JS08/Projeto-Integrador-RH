@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Departamento } from './departamento/entity/departamento.entity';
 import { FuncionariosModule } from './funcionario/module/funcionario.module';
 import { Funcionarios } from './funcionario/entity/funcionario.entity';
-import { departamentoModule } from './departamento/module/departamento.module'
+import { DepartamentoModule } from './departamento/module/departamento.module';
 
 @Module({
   imports: [
@@ -19,7 +19,7 @@ import { departamentoModule } from './departamento/module/departamento.module'
       synchronize: true,
     }),
     FuncionariosModule,
-    departamentoModule
+    DepartamentoModule
   ],
 })
 export class AppModule {}

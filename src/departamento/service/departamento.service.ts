@@ -4,12 +4,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Funcionarios } from '../../funcionario/entity/funcionario.entity';
 import { Departamento } from '../entity/departamento.entity';
+import { truncate } from 'node:fs';
 @Injectable()
 export class DepartamentoService {
   funcionariosRepository: any;
+  departamentoRepository: any;
   constructor(
-    @InjectRepository(Funcionarios) // Conecta Tabela ao banco via Typeorm
-    private funcionarioRepository: Repository<Funcionarios>,
+
   ) {}
 
     // Método para calcular o salário líquido
@@ -31,8 +32,8 @@ export class DepartamentoService {
   }
 
   // Listar todos os Funcionários
-  async findAll(): Promise<Funcionarios[]> {
-    return this.funcionariosRepository.find({ relations: ['departamento'] });
+  async findAll(): Promise<Departamento[]> {
+    return await this.departamentoRepository.find({ relations: {funcionarios: true} });
   }
 
   // Atualizar Funcionário
@@ -63,6 +64,6 @@ export class DepartamentoService {
   }
   // Deletar um Funcionário
   async delete(id: number): Promise<void> {
-    await this.funcionarioRepository.delete(id);
+    await this.funcionariosRepository.delete(id);
   }
 }
