@@ -1,69 +1,50 @@
 /* eslint-disable */
-import { HttpException, HttpStatus, Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Funcionarios } from '../../funcionario/entity/funcionario.entity';
 import { Departamento } from '../entity/departamento.entity';
-import { truncate } from 'node:fs';
+
 @Injectable()
 export class DepartamentoService {
-  funcionariosRepository: any;
-  departamentoRepository: any;
   constructor(
-
+    @InjectRepository(Departamento)
+    private departamentoRepository: Repository<Departamento>,
   ) {}
 
-    // Método para calcular o salário líquido
-  private calcularSalarioLiquido(
-    salarioBruto: number,
-    bonus: number,
-    descontos: number,
-  ): number {
-    return salarioBruto + bonus - descontos;
-  }
-// Criar um novo Funcionário
-  async create(funcionarios: Funcionarios): Promise<Funcionarios> {
-    funcionarios.salario_liquido = this.calcularSalarioLiquido(
-      funcionarios.salario_bruto,
-      funcionarios.bonus,
-      funcionarios.descontos,
-    );
-    return this.funcionariosRepository.save(funcionarios);
+  // Criar Departamento
+  async create(departamento: Departamento): Promise<Departamento> {
+    return await this.departamentoRepository.save(departamento);
   }
 
-  // Listar todos os Funcionários
+  // Listar todos os Departamentos
   async findAll(): Promise<Departamento[]> {
-    return await this.departamentoRepository.find({ relations: {funcionarios: true} });
+    return await this.departamentoRepository.find({
+      relations: ['funcionarios']
+    });
   }
 
-  // Atualizar Funcionário
-  async update(
-    id: number,
-    funcionarios: Funcionarios,
-  ): Promise<Funcionarios> {
-    funcionarios.salario_liquido = this.calcularSalarioLiquido(
-      funcionarios.salario_bruto,
-      funcionarios.bonus,
-      funcionarios.descontos,
-    );
-    await this.funcionariosRepository.update(id, funcionarios);
-    return this.findById(id);
-  }
-  // Listar Funcionário por (ID)
-  async findById(id: number): Promise<Funcionarios> {
-    const funcionarios = await this.funcionariosRepository.findOne({
+  // Buscar Departamento por ID
+  async findById(id: number): Promise<Departamento> {
+    const departamento = await this.departamentoRepository.findOne({
       where: { id },
-      relations: {departamento: true}
+      relations: ['funcionarios']
     });
 
-    if (!funcionarios) {
-      throw new HttpException('Funcionário não encontrado.',HttpStatus.NOT_FOUND);
+    if (!departamento) {
+      throw new HttpException('Departamento não encontrado!', HttpStatus.NOT_FOUND);
     }
 
-    return funcionarios;
+    return departamento;
   }
-  // Deletar um Funcionário
+
+  // Atualizar Departamento
+  async update(id: number, departamento: Departamento): Promise<Departamento> {
+    await this.departamentoRepository.update(id, departamento);
+    return this.findById(id);
+  }
+
+  // Deletar Departamento
   async delete(id: number): Promise<void> {
-    await this.funcionariosRepository.delete(id);
+    await this.departamentoRepository.delete(id);
   }
 }

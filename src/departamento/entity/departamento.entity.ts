@@ -10,10 +10,9 @@ export class Departamento {
     nome_departamento: string;
 
     @Column()
-    descricao: string; 
+    descricao: string;
 
     @OneToMany(() => Funcionarios, (funcionarios)=> funcionarios.departamento)  // Representa um relacionamento de Muitos para um.
     funcionarios: Funcionarios[];
-    
-    
+
 }

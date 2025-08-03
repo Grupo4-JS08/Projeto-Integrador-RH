@@ -13,7 +13,7 @@ import { DepartamentoModule } from './departamento/module/departamento.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '250319',
+      password: '513610',
       database: 'db_rh',
       entities: [Departamento, Funcionarios],
       synchronize: true,

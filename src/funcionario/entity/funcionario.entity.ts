@@ -32,4 +32,5 @@ export class Funcionarios {
 
     @JoinColumn({name: 'Departamento_id'})
     departamento: Departamento;
+    
 }

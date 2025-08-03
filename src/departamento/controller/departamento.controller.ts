@@ -36,10 +36,12 @@ findById(@Param('id', ParseIntPipe) id: number): Promise<Departamento>{
     return this.DepartamentoService.findById(id);
 }
 
-@Put()
+@Put('/:id')
 @HttpCode(HttpStatus.OK)
-update(@Body() departamento: Departamento): Promise<Departamento> {
-    return this.DepartamentoService.update(departamento);
+update (@Param('id', ParseIntPipe) id: number,
+  @Body() departamento: Departamento
+): Promise<Departamento> {
+  return this.DepartamentoService.update(id, departamento);
 }
 
 @Delete('/:id')
