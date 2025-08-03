@@ -13,7 +13,7 @@ export class Departamento {
     descricao: string; 
 
     @OneToMany(() => tb_Funcionario, (funcionario)=> funcionario.departamento)  // Representa um relacionamento de Muitos para um.
-    departamento: Departamento[];
-    funcionario: any;
+    funcionario: tb_Funcionario[];
+    
 
 }
