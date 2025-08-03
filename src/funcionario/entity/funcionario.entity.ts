@@ -2,7 +2,8 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm"; // Importação Typerom
 // import { FuncionarioModule } from "../module/funcionario.module";
 import { Departamento } from '../../departamento/entity/departamento.entity';
-@Entity()
+
+@Entity({ name: 'tb_funcionarios' })
 export class Funcionarios {
     @PrimaryGeneratedColumn()
     id: number; // ID: 1
@@ -30,7 +31,7 @@ export class Funcionarios {
     }
 )
 
-    @JoinColumn({name: 'Departamento_id'})
+    @JoinColumn({name: 'departamento'})
     departamento: Departamento;
     
 }
