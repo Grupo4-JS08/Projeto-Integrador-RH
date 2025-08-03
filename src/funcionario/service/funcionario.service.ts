@@ -5,6 +5,9 @@ import { Repository } from "typeorm";
 import { tb_Funcionario } from "../entity/funcionario.entity";
 @Injectable()
 export class FuncionarioService{
+    calcularSalarioLiquido(id: number): any {
+        throw new Error('Method not implemented.');
+    }
     constructor(
         @InjectRepository(tb_Funcionario) // Conecta Tabela ao banco via Typeorm
         private funcionarioRepository: Repository<tb_Funcionario>

@@ -25,7 +25,7 @@ export class tb_Funcionario {
     @Column()
     salario_liquido: number; // R$:2000
 
-    @ManyToOne(() => Departamento, departamento => departamento.funcionario, {
+    @ManyToOne(() => Departamento, (departamento) => departamento.funcionario, {
         onDelete: "CASCADE",
     }
 )

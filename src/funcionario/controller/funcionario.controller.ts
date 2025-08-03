@@ -28,8 +28,13 @@ create(@Body() funcionario: tb_Funcionario): Promise<tb_Funcionario>{
 @HttpCode(HttpStatus.OK)
 findAll(): Promise<tb_Funcionario[]>{
     return this.FuncionarioService.findAll();
+    
+/*}
+@Get(':id/salario-liquido' //  Busca salario liquido
+findByid(@Param('id') id: number): Promise<any> {
+  return this.FuncionarioService.findById(id);*/
+  
 }
-
 @Get('/:id') // Pesquisa por Id
 @HttpCode(HttpStatus.OK)
 findById(@Param('id', ParseIntPipe) id: number): Promise<tb_Funcionario>{

@@ -7,18 +7,12 @@ export class Departamento {
     id: number; // ID: 1
 
     @Column()
-    horas_trabalhadas: number; // 8,48 horas
+    nome_departamento: string;
 
-    @Column('decimal')
-    descontos: number; // 500
+    @Column()
+    descricao: string; 
 
-    @Column('decimal')
-    salarioLiquido: number; // 2.000
-
-    @Column('decimal')
-    salario_bruto // 2.500
-
-    @OneToMany(() => tb_Funcionario, (funcionario)=> funcionario.departamento)onDelete: 'CASCADE'  // Representa um relacionamento de Muitos para um.
+    @OneToMany(() => tb_Funcionario, (funcionario)=> funcionario.departamento)  // Representa um relacionamento de Muitos para um.
     departamento: Departamento[];
     funcionario: any;
 
