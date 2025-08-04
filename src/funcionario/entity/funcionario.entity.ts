@@ -1,6 +1,6 @@
 /* eslint-disable */
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm"; // Importação Typerom
-// import { FuncionarioModule } from "../module/funcionario.module";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm"; // Importação Typerom
+
 import { Departamento } from '../../departamento/entity/departamento.entity';
 
 @Entity({ name: 'tb_funcionarios' })
@@ -12,10 +12,10 @@ export class Funcionarios {
     nome_completo: string; // Raul
 
     @Column()
-    hora_trabalhadas: number; // 10 horas
+    horas_trabalhadas: number; // 10 horas
 
     @Column()
-    bonus: number; // 5 Horas de bonus
+    bonus: number; // 1000 reais de bônus
 
     @Column()
     descontos: number; // R$500 de descontos
@@ -33,5 +33,6 @@ export class Funcionarios {
 
     @JoinColumn({name: 'departamento'})
     departamento: Departamento;
+    salario_base: any;
     
 }

@@ -29,11 +29,7 @@ create(@Body() funcionarios: Funcionarios): Promise<Funcionarios>{
 findAll(): Promise<Funcionarios[]>{
     return this.FuncionariosService.findAll();
     
-/*}
-@Get(':id/salario-liquido' //  Busca salario liquido
-findByid(@Param('id') id: number): Promise<any> {
-  return this.FuncionarioService.findById(id);*/
-  
+ 
 }
 @Get('/:id') // Pesquisa por Id
 @HttpCode(HttpStatus.OK)
